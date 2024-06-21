@@ -16,9 +16,9 @@ class PersonController extends Controller
         $persons = Person::query();
 
         if ($search) {
-            $persons = $persons->where('name', 'like', '%$search')
-                               ->orWhere('age', 'like', '%$search')
-                               ->orWhere('gender', 'like', '%$search');
+            $persons = $persons->where('name', 'like', "%{$search}%")
+                               ->orWhere('age', 'like', "%{$search}%")
+                               ->orWhere('gender', 'like', "%{$search}%");
         }
 
         return response()->json($persons->get());
